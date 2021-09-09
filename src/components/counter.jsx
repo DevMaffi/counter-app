@@ -11,15 +11,26 @@ export class Counter extends Component {
   }
 
   render() {
-    const { tags } = this.state;
-
     return (
       <>
-        {tags.length === 0 && <p>Please create a new tag!</p>}
-        {this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </>
     );
   }
+
+  // handlers
+
+  handleIncrement = () => {
+    this.setState(state => ({ count: state.count + 1 }));
+  };
+
+  // methods
 
   formatCount = () => {
     const { count } = this.state;
