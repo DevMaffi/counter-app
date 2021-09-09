@@ -6,7 +6,7 @@ export class Counter extends Component {
 
     this.state = {
       count: 0,
-      tags: ['tag1', 'tag2', 'tag3'],
+      tags: [],
     };
   }
 
@@ -15,13 +15,8 @@ export class Counter extends Component {
 
     return (
       <>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        {tags.length === 0 && <p>Please create a new tag!</p>}
+        {this.renderTags()}
       </>
     );
   }
@@ -37,6 +32,22 @@ export class Counter extends Component {
     classes += this.state.count === 0 ? 'warning' : 'primary';
 
     return classes;
+  };
+
+  renderTags = () => {
+    const { tags } = this.state;
+
+    if (tags.length === 0) {
+      return <p>There are no tags!</p>;
+    }
+
+    return (
+      <ul>
+        {tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
   };
 }
 
