@@ -9,20 +9,9 @@ export class Counter extends Component {
     };
   }
 
-  formatCount = () => {
-    const { count } = this.state;
-
-    return count === 0 ? 'Zero' : count;
-  };
-
-  getBadgeClasses() {
-    let classes = 'badge m-2 badge-';
-    classes += this.state.count === 0 ? 'warning' : 'primary';
-
-    return classes;
-  }
-
   render() {
+    const { tags } = this.state;
+
     return (
       <>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -30,6 +19,19 @@ export class Counter extends Component {
       </>
     );
   }
+
+  formatCount = () => {
+    const { count } = this.state;
+
+    return count === 0 ? 'Zero' : count;
+  };
+
+  getBadgeClasses = () => {
+    let classes = 'badge m-2 badge-';
+    classes += this.state.count === 0 ? 'warning' : 'primary';
+
+    return classes;
+  };
 }
 
 export default Counter;
