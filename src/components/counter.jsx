@@ -6,6 +6,7 @@ export class Counter extends Component {
 
     this.state = {
       count: 0,
+      tags: ['tag1', 'tag2', 'tag3'],
     };
   }
 
@@ -16,6 +17,11 @@ export class Counter extends Component {
       <>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>
+          {tags.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
       </>
     );
   }
