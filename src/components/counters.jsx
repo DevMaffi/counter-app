@@ -12,6 +12,16 @@ export class Counters extends Component {
     ],
   };
 
+  // event handlers
+
+  handleDelete = counterId => {
+    const counters = this.state.counters.filter(c => c.id !== counterId);
+
+    this.setState({
+      counters,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -25,16 +35,6 @@ export class Counters extends Component {
       </div>
     );
   }
-
-  // handlers
-
-  handleDelete = counterId => {
-    const counters = this.state.counters.filter(c => c.id !== counterId);
-
-    this.setState({
-      counters,
-    });
-  };
 }
 
 export default Counters;
