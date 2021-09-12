@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 export class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     tags: [],
   };
 
   render() {
+    const { props } = this;
+
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -15,6 +17,12 @@ export class Counter extends Component {
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={() => props.onDelete(props.counter.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
       </div>
     );
