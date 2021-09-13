@@ -20,20 +20,31 @@ export class Counter extends Component {
     const { props } = this;
 
     return (
-      <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => props.onIncrement(props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => props.onDelete(props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+      <div className="row">
+        <div className="col-1">
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => props.onIncrement(props.counter)}
+            className="btn btn-secondary btn-sm"
+          >
+            +
+          </button>
+          <button
+            onClick={() => props.onDecrement(props.counter)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={this.props.counter.value === 0}
+          >
+            -
+          </button>
+          <button
+            onClick={() => props.onDelete(props.counter.id)}
+            className="btn btn-danger btn-sm m-2"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     );
   }
